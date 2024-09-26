@@ -21,7 +21,7 @@ def train_and_evaluate_models(X_train, X_test, y_train, y_test, preprocessor):
 
     models = {
         "Logistic Regression": LogisticRegression(),
-        "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric="logloss"),
+        "XGBoost": XGBClassifier(),
     }
 
     param_grids = {
@@ -54,12 +54,14 @@ def train_and_evaluate_models(X_train, X_test, y_train, y_test, preprocessor):
                 )
 
                 grid_search.fit(X_train, y_train)
+                pipeline.fit(X_train, y_train)
 
-                best_pipeline = grid_search.best_estimator_
+                best_pipeline = pipeline
                 y_pred = best_pipeline.predict(X_test)
                 y_pred_proba = best_pipeline.predict_proba(X_test)[:, 1]
 
                 results[name] = {
+                    "Best Parameters": grid_search.best_params_,
                     "Test Accuracy": accuracy_score(y_test, y_pred),
                     "Test Precision": precision_score(
                         y_test, y_pred, average="weighted"
@@ -69,7 +71,6 @@ def train_and_evaluate_models(X_train, X_test, y_train, y_test, preprocessor):
                     "Test ROC-AUC": roc_auc_score(y_test, y_pred_proba),
                     "CV Mean F1-score": grid_search.best_score_,
                 }
-                print(results[name])
 
                 fpr, tpr, thresholds = roc_curve(y_test, y_pred_proba)
                 plt.figure(figsize=(10, 8))
@@ -100,8 +101,9 @@ def train_and_evaluate_models(X_train, X_test, y_train, y_test, preprocessor):
 
                 mlflow.log_artifact(cm_heatmap)
                 mlflow.log_artifact(roc_auc_plot)
-                mlflow.log_params(grid_search.best_params_)
-                mlflow.log_metrics(results[name])
+                mlflow.log_params(results[name]["Best Parameters"])
+                results_metrics = {k: v for k, v in list(results[name].items())[1:]}
+                mlflow.log_metrics(results_metrics)
                 mlflow.sklearn.log_model(best_pipeline, f"{name}_model")
 
             except Exception as e:
