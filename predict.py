@@ -4,7 +4,7 @@ import mlflow
 from scripts.feature_engineering import feature_engineering
 
 def load_model():
-    model_uri = "runs:/70b578fbfaf94f35a293bfbe0cb6a228/final_model"
+    model_uri = "runs:/fbf44305c8a543d99ee133d382c43179/final_model"
     loaded_model = mlflow.pyfunc.load_model(model_uri)
     return loaded_model
 
