@@ -1,7 +1,7 @@
 import mlflow
 import mlflow.sklearn
+import pandas as pd
 
-from load import load_preprocess
 from feature_engineering import feature_engineering
 from feature_selection import feature_selection
 from model_building import train_and_evaluate_models, select_best_model
@@ -16,7 +16,7 @@ def main():
 
     with mlflow.start_run(run_name="Full Pipeline"):
         file_path = input("Enter file name: ")
-        df = load_preprocess(file_path)
+        df = pd.read_csv(file_path)
         fe_df = feature_engineering(df)
         fs_df, correlation_heatmap = feature_selection(fe_df)
         mlflow.log_artifact(correlation_heatmap)

@@ -3,6 +3,13 @@ import numpy as np
 
 def feature_engineering(df):
 
+    df = df.drop_duplicates()
+
+    columns = ["job", "marital", "education", "housing", "loan"]
+    for column in columns:
+        df[column] = df[column].apply(lambda x: np.nan if x == "unknown" else x)
+        df[column].fillna(df[column].mode()[0], inplace=True)
+
     df["age_group"] = pd.cut(
         df["age"],
         bins=[0, 25, 35, 45, 55, 65, np.inf],
@@ -60,10 +67,5 @@ def feature_engineering(df):
         ),
         axis=1,
     )
-
-    col_name = "y"
-    cols = list(df.columns)
-    cols.append(cols.pop(cols.index(col_name)))
-    df = df[cols]
 
     return df
