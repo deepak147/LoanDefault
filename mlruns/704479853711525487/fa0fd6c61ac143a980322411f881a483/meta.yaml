@@ -1,0 +1,16 @@
+artifact_uri: file:///D:/coding_space/banking/TermDeposit/mlruns/704479853711525487/fa0fd6c61ac143a980322411f881a483/artifacts
+deleted_time: 1727379367058
+end_time: 1727379241042
+entry_point_name: ''
+experiment_id: '704479853711525487'
+lifecycle_stage: deleted
+run_id: fa0fd6c61ac143a980322411f881a483
+run_name: Full Pipeline
+run_uuid: fa0fd6c61ac143a980322411f881a483
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727379058764
+status: 3
+tags: []
+user_id: sluvv

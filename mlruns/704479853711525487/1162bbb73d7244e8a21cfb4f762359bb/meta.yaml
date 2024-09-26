@@ -1,0 +1,16 @@
+artifact_uri: file:///D:/coding_space/banking/TermDeposit/mlruns/704479853711525487/1162bbb73d7244e8a21cfb4f762359bb/artifacts
+deleted_time: 1727379373963
+end_time: 1727378591182
+entry_point_name: ''
+experiment_id: '704479853711525487'
+lifecycle_stage: deleted
+run_id: 1162bbb73d7244e8a21cfb4f762359bb
+run_name: Train XGBoost
+run_uuid: 1162bbb73d7244e8a21cfb4f762359bb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727378468957
+status: 3
+tags: []
+user_id: sluvv

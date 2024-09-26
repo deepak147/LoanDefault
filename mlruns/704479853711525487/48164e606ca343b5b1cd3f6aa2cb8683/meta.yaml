@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/coding_space/banking/TermDeposit/mlruns/704479853711525487/48164e606ca343b5b1cd3f6aa2cb8683/artifacts
+end_time: 1727379429871
+entry_point_name: ''
+experiment_id: '704479853711525487'
+lifecycle_stage: active
+run_id: 48164e606ca343b5b1cd3f6aa2cb8683
+run_name: Train Logistic Regression
+run_uuid: 48164e606ca343b5b1cd3f6aa2cb8683
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1727379388970
+status: 3
+tags: []
+user_id: sluvv

@@ -1,0 +1,12 @@
+scikit-learn
+notebook
+seaborn
+matplotlib
+ydata-profiling
+sweetviz
+pandas
+numpy
+mlflow
+black
+xgboost
+scipy
